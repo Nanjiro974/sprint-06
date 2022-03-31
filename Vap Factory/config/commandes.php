@@ -39,5 +39,16 @@ function supprimer($id)
 		$req->closeCursor();
 	}
 }
+function modifier($quantite)
+{
+	if(require("connexion.php"))
+	{
+		$req=$access->prepare("UPDATE FROM quantite= WHERE quantité=?");
+
+		$req->execute(array($quantite));
+
+		$req->closeCursor();
+	}
+}
 
 ?>

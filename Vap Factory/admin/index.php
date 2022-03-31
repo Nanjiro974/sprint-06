@@ -34,7 +34,7 @@
   </div>
   <div class="navbar navbar-dark bg-dark shadow-sm">
     <div class="container">
-      <a href="http://127.0.0.1/edsa-Site%20E-commerce/Vap%20Factory/" class="navbar-brand d-flex align-items-center">
+      <a href="http://127.0.0.1:8080/edsa-Vap%20Factory/" class="navbar-brand d-flex align-items-center">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
         <strong>Vap Factory</strong>
       </a>
@@ -63,17 +63,22 @@
 
    <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Prix d'achat</label>
-    <input type="number" class="form-control" name="prix_achat" required>
+    <input type="number" step="0.01" class="form-control" name="prix_achat" required>
   </div>
 
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Prix de vente</label>
-    <input type="number" class="form-control" name="prix_vente" required>
+    <input type="number" step="0.01" class="form-control" name="prix_vente" required>
   </div>
 
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Quantitée</label>
     <input type="number" class="form-control" name="quantite" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">référence</label>
+    <input type="nom" class="form-control" name="reference" required>
   </div>
 
    <div class="mb-3">
@@ -106,20 +111,22 @@
   if(isset($_POST['valider']))
   {
     if(isset($_POST['image']) AND isset($_POST['nom']) AND isset($_POST['prix_achat']) AND 
-       isset($_POST['prix_vente']) AND isset($_POST['quantite']) AND isset($_POST['desc']))
+       isset($_POST['prix_vente']) AND isset($_POST['quantite']) AND isset($_POST['reference']) AND isset($_POST['desc']))
     {
-    if(!empty($_POST['image']) AND !empty($_POST['nom']) AND !empty($_POST['prix_achat']) AND !empty($_POST['prix_vente']) AND !empty($_POST['quantite']) AND !empty($_POST['desc']))
+    if(!empty($_POST['image']) AND !empty($_POST['nom']) AND !empty($_POST['prix_achat']) AND !empty($_POST['prix_vente'])
+     AND !empty($_POST['quantite']) AND !empty($_POST['reference']) AND !empty($_POST['desc']))
 	    {
 	    	$image = htmlspecialchars(strip_tags($_POST['image']));
 	    	$nom = htmlspecialchars(strip_tags($_POST['nom']));
         $prix_achat = htmlspecialchars(strip_tags($_POST['prix_achat']));
         $prix_vente = htmlspecialchars(strip_tags($_POST['prix_vente']));
         $quantite = htmlspecialchars(strip_tags($_POST['quantite']));
+        $reference = htmlspecialchars(strip_tags($_POST['reference']));
 	    	$desc = htmlspecialchars(strip_tags($_POST['desc']));
           
           try 
           {
-            ajouter($image, $nom, $prix_achat, $prix_vente, $quantite, $desc);
+            ajouter($image, $nom, $prix_achat, $prix_vente, $quantite, $reference, $desc);
           } 
           catch (Exception $e) 
           {
