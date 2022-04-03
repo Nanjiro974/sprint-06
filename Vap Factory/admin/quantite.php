@@ -1,8 +1,7 @@
 <?php
 
   require("../config/commandes.php");
-
-  $Produits=afficher()
+  $Produits=afficher();
 
 ?>
 
@@ -46,36 +45,48 @@
     </div>
   </div>
 </header>
-<div class="album py-5 bg-light">
+
+  <div class="album py-5 bg-light">
     <div class="container">
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       	
 <form method="post">
+  <div class="mb-3">
+
+   <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Identifiant du produit</label>
+
+    <input type="number" class="form-control" name="idproduit" required>
+  </div>
 
   <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Quantitée</label>
-    <input type="number" class="form-control" name="quantite" required>
+    <label for="exampleInputPassword1" class="form-label">Nouvelle Quantitée</label>
+
+    <input type="number" class="form-control" name="Majquantite" required>
   </div>
+
+  <button type="submit" name="valider" class="btn btn-primary">Modifier la quantité</button>
+</form>
 
       </div>
 
 
-<div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
   
         <?php foreach($Produits as $produit): ?> 
         <div class="col">
           <div class="card shadow-sm">
           
-          <h3><?= $produit->nom ?></h3>
+          <p class= "form-control-lg"><?= $produit->reference ?></p>
 
             <img src="<?= $produit->image ?>">
 
-            <p class= "form-control-lg"><?= $produit->reference ?></p>
+            <h3><?= $produit->id ?></h3>
 
             <div class="card-body">
             <small class="text-muted"><?= $produit->quantite ?> en stock</small>
-            <button type="submit" name="valider" class="btn btn-primary">Modifier la quantitée</button>
+            
             </div>
           </div>
         </div>
@@ -91,19 +102,53 @@
 
 <?php
 
-if(isset($_POST['valider']))
-  {
-	    	$quantite = htmlspecialchars(strip_tags($_UPDATE['quantite']));
-        try 
-        {
-          modifier($quantite);
-        } 
-        catch (Exception $e) 
-        {
-            $e->getMessage();
-        }
+// if (!empty($_GET['quantite'])) {
+//   $id = $_GET['quantite'];
+//   $recupdonnee = "SELECT FROM `produits` where id=$id";
+//   $resultat = mysqli_query($bdd, $recupdonnee);
+//   $donnee = mysqli_fetch_assoc($resultat);
+//   $quantite = $donnee['quantite'];
 
-      }
+//   if (isset($_POST['valider'])) {
+//     if (!empty($_POST['quantite'])
+
+//     ) {
+//         $quantite = ($_POST['quantite']);
+
+//         $insererArticle = "UPDATE produits SET quantite='$quantite' WHERE id=$id;";
+//             $result = mysqli_query($bdd, $insererArticle);
+//             if ($result) {
+//                 header('location:index.php');
+//             } else {
+//                 die(mysqli_error($bdd));
+//             }
+//         }
+//     }
+//   }
+
+
+  if(isset($_POST['valider']))
+  {
+    if(isset($_POST['quantite']))
+    {
+    if(!empty($_POST['idproduit']) AND is_numeric($_POST['Majquantite']))
+	    {
+	    	$Majquantite = htmlspecialchars(strip_tags($_POST['quantite']));
+
+          try 
+          {
+            modifier($quantite);
+          } 
+          catch (Exception $e) 
+          {
+          	$e->getMessage();
+          }
+	    	
+
+
+	    }
+    }
+  }
 
 
 ?>

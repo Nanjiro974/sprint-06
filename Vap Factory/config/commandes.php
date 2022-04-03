@@ -1,12 +1,12 @@
 <?php
 
- function ajouter($image, $nom,  $prix_achat, $prix_vente, $quantite, $desc)
+ function ajouter($image, $nom, $prix_achat, $prix_vente, $quantite, $reference, $desc)
 {
    if(require("connexion.php"))
    {
-     $req = $access->prepare("INSERT INTO produits (image, nom, prix_vente, prix_achat, quantite, description) VALUES ('$image', '$nom', '$prix_achat', '$prix_vente', '$quantite', '$desc')");
+     $req = $access->prepare("INSERT INTO produits (image, nom, prix_vente, prix_achat, quantite, reference, description) VALUES ('$image', '$nom', '$prix_achat', '$prix_vente', '$quantite', '$reference', '$desc')");
 
-     $req->execute(array($image, $nom, $prix_achat, $prix_vente, $quantite, $desc));
+     $req->execute(array($image, $nom, $prix_achat, $prix_vente, $quantite, $reference, $desc));
 
      $req->closeCursor();
    }
@@ -43,7 +43,7 @@ function modifier($quantite)
 {
 	if(require("connexion.php"))
 	{
-		$req=$access->prepare("UPDATE FROM quantite= WHERE quantité=?");
+		$req=$access->prepare("UPDATE produits SET Majquantite='$quantite' WHERE id=?");
 
 		$req->execute(array($quantite));
 
