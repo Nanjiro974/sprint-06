@@ -1,8 +1,8 @@
 # LIENS DU PROJET SPRINT06 A.THOMAS
-https://armougom-thomas.sprint-06.sc1lgvu9627.universe.wf
+http://armougom-thomas.sprint-06.sc1lgvu9627.universe.wf
 
 ## NOTICE SPRINT06<br>
-**Pour lancer mon site** veuillez cliquez sur le ce lien [armougom-thomas.sprint-06.sc1lgvu9627.universe.wf](https://armougom-thomas.sprint-06.sc1lgvu9627.universe.wf/)
+**Pour lancer mon site** veuillez cliquez sur le ce lien [armougom-thomas.sprint-06.sc1lgvu9627.universe.wf](http://armougom-thomas.sprint-06.sc1lgvu9627.universe.wf)
 
 Mon site est héberger sur la plateforme [o2switch](https://kip.o2switch.net:2083/)
 
